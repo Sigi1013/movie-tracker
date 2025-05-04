@@ -26,6 +26,7 @@ public class CLIController {
                     );
                 }
                 case "2" -> MovieManager.getWatchList();
+                case "3" -> MovieManager.getWatchedMoviesList();
                 case "0" -> menuOpen = false;
                 default -> System.out.println("Invalid option, please try again.");
             }
