@@ -21,7 +21,9 @@ public class CLIController {
                 case "1" -> {
                     System.out.print("Enter the name of the film to search: ");
                     String searchInput = userInput.nextLine();
-                    apiClient.fetchMovieDetails(searchInput.replace(" ", "+"));
+                    addMovieToListMenu(
+                            apiClient.fetchMovieDetails(searchInput.replace(" ", "+"))
+                    );
                 }
                 case "0" -> menuOpen = false;
                 default -> System.out.println("Invalid option, please try again.");
@@ -30,5 +32,30 @@ public class CLIController {
 
         userInput.close();
         System.out.println("Exiting program...");
+    }
+
+    public void addMovieToListMenu(Movie movie) {
+        boolean addMenuOpen = true;
+        while (addMenuOpen) {
+            System.out.println("-------------------------");
+            System.out.println("1. Add movie to watchlist");
+            System.out.println("2. Add movie to watched movie list");
+            System.out.println("0. Go back");
+            System.out.println("-------------------------");
+
+            System.out.print("Enter a number to choose an option: ");
+            String menuOption = userInput.nextLine();
+
+            switch (menuOption) {
+                case "1" -> {
+                    System.out.println("Movie added to watchlist.");
+                    MovieManager.addToWatchList(movie);
+                    addMenuOpen = false;
+                }
+                case "2" -> System.out.println("Movie marked as watched.");
+                case "0" -> addMenuOpen = false;
+                default -> System.out.println("Invalid option, please try again.");
+            }
+        }
     }
 }
