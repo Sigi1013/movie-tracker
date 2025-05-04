@@ -22,5 +22,9 @@ public class MovieManager {
         System.out.println("-------------------------");
     }
 
+    public static void addToWatchedMoviesList(Movie movie){
+        WatchedMoviesList.add(movie);
+    }
+
     
 }
