@@ -54,7 +54,11 @@ public class CLIController {
                     MovieManager.addToWatchList(movie);
                     addMenuOpen = false;
                 }
-                case "2" -> System.out.println("Movie marked as watched.");
+                case "2" -> {
+                    System.out.println("Movie marked as watched.");
+                    MovieManager.addToWatchedMoviesList(movie);
+                    addMenuOpen = false;
+                }
                 case "0" -> addMenuOpen = false;
                 default -> System.out.println("Invalid option, please try again.");
             }
