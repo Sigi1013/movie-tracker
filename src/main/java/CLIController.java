@@ -25,6 +25,7 @@ public class CLIController {
                             apiClient.fetchMovieDetails(searchInput.replace(" ", "+"))
                     );
                 }
+                case "2" -> MovieManager.getWatchList();
                 case "0" -> menuOpen = false;
                 default -> System.out.println("Invalid option, please try again.");
             }
