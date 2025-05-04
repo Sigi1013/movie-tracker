@@ -26,5 +26,18 @@ public class MovieManager {
         WatchedMoviesList.add(movie);
     }
 
-    
+    public static void getWatchedMoviesList(){
+        System.out.println("-------------------------");
+        System.out.println("Watched Movies List.");
+        System.out.println("-------------------------");
+        for(Movie movie : WatchedMoviesList){
+            System.out.println("Title: " + movie.getTitle() + " | "
+                    + "Released: " + movie.getYear() + " | "
+                    + "Runtime: " + movie.getRuntime() + " | "
+                    + "Director: " + movie.getDirector() + " | "
+                    + "Imdb rating: " + movie.getImdbRating() + " | "
+            );
+        }
+        System.out.println("-------------------------");
+    }
 }
