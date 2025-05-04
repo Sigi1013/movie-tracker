@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class MovieManager {
     static private final ArrayList<Movie> WatchList = new ArrayList<>();
+    static private final ArrayList<Movie> WatchedMoviesList = new ArrayList<>();
 
     public static void addToWatchList(Movie movie){
         WatchList.add(movie);
