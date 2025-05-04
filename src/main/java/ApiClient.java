@@ -10,7 +10,7 @@ public class ApiClient {
         Gson gson = new Gson();
         Movie movie = new Movie();
 
-        public void fetchMovieDetails(String searchQuery){
+        public Movie fetchMovieDetails(String searchQuery){
             HttpRequest getRequest = HttpRequest.newBuilder()
                     .uri(URI.create(BASE_URL + searchQuery))
                     .method("GET", HttpRequest.BodyPublishers.noBody())
@@ -38,7 +38,7 @@ public class ApiClient {
                         + "Imdb rating: " + movie.getImdbRating() + " | "
                 );
             }
-
+            return movie;
         }
 }
 
