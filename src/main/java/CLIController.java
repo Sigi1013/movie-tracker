@@ -25,17 +25,15 @@ public class CLIController {
                             apiClient.fetchMovieDetails(searchInput.replace(" ", "+"))
                     );
                 }
-                case "2" -> {
-                    handleWatchListMovieRemoval(
-                            MovieManager.getWatchList()
-                    );
 
-                }
-                case "3" -> {
-                    handleWatchedMovieRemoval(
-                            MovieManager.getWatchedMoviesListHistory()
-                    );
-                }
+                case "2" -> handleWatchListMovieRemoval(
+                        MovieManager.getWatchList()
+                );
+
+                case "3" -> handleWatchedMovieRemoval(
+                        MovieManager.getWatchedMoviesListHistory()
+                );
+
                 case "0" -> menuOpen = false;
                 default -> System.out.println("Invalid option, please try again.");
             }
@@ -126,7 +124,6 @@ public class CLIController {
         System.out.println("1. Remove a movie from Watched list");
         System.out.println("0. Go back");
         System.out.println("-------------------------");
-
         System.out.print("Enter a number to choose an option: ");
     }
 }
