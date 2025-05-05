@@ -1,31 +1,14 @@
 import java.util.ArrayList;
 
 public class MovieManager {
-    static private final ArrayList<Movie> WatchList = new ArrayList<>();
-    static private final ArrayList<Movie> WatchedMoviesList = new ArrayList<>();
+    static private final ArrayList<Movie> WatchMovieList = new ArrayList<>();
+    static private final ArrayList<Movie> WatchedMoviesListHistory = new ArrayList<>();
 
     public static void addToWatchList(Movie movie){
-        WatchList.add(movie);
+        WatchMovieList.add(movie);
     }
-
-    public static void getWatchList(){
-        System.out.println("\nWatched Movies List.");
-        for(Movie movie : WatchList){
-            System.out.println("\nTitle: " + movie.getTitle() + " | "
-                    + "Released: " + movie.getYear() + " | "
-                    + "Runtime: " + movie.getRuntime() + " | "
-                    + "Director: " + movie.getDirector() + " | "
-                    + "Imdb rating: " + movie.getImdbRating() + " | "
-            );
-        }
-    }
-
-    public static void addToWatchedMoviesList(Movie movie){
-        WatchedMoviesList.add(movie);
-    }
-
-    public static boolean getWatchedMoviesList(){
-        if(WatchedMoviesList.isEmpty()){
+    public static boolean getWatchList(){
+        if(WatchMovieList.isEmpty()){
 
             System.out.println("This list is empty. \n" +
                     "To add a movie, search for it use the number 1. option in main menu.");
@@ -34,9 +17,43 @@ public class MovieManager {
         }else{
             int index = 0;
 
-            System.out.println("\nWatched Movies List.");
+            System.out.println("\nWatch Movie List.");
 
-            for(Movie movie : WatchedMoviesList){
+            for(Movie movie : WatchMovieList){
+                System.out.println("ID:" + index +" | Title: " + movie.getTitle() + " | "
+                        + "Released: " + movie.getYear() + " | "
+                        + "Runtime: " + movie.getRuntime() + " | "
+                        + "Director: " + movie.getDirector() + " | "
+                        + "Imdb rating: " + movie.getImdbRating() + " | "
+                );
+                index++;
+            }
+
+        }
+        return true;
+    }
+
+    public static void removeMovieWatchList(int index){
+        WatchMovieList.remove(index);
+    }
+
+    public static void addToWatchedMovieListHistory(Movie movie){
+        WatchedMoviesListHistory.add(movie);
+    }
+
+    public static boolean getWatchedMoviesListHistory(){
+        if(WatchedMoviesListHistory.isEmpty()){
+
+            System.out.println("This list is empty. \n" +
+                    "To add a movie, search for it use the number 1. option in main menu.");
+
+            return false;
+        }else{
+            int index = 0;
+
+            System.out.println("\nWatched Movie List.");
+
+            for(Movie movie : WatchedMoviesListHistory){
                 System.out.println("ID:" + index +" | Title: " + movie.getTitle() + " | "
                         + "Released: " + movie.getYear() + " | "
                         + "Runtime: " + movie.getRuntime() + " | "
@@ -48,9 +65,9 @@ public class MovieManager {
 
             }
         return true;
-        }
+    }
 
-    public static void removeMovieWatchedList(int index){
-        WatchedMoviesList.remove(index);
+    public static void removeMovieWatchedListHistory(int index){
+        WatchedMoviesListHistory.remove(index);
     }
 }
