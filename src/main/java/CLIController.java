@@ -26,12 +26,14 @@ public class CLIController {
                     );
                 }
                 case "2" -> {
-                    MovieManager.getWatchList();
+                    handleWatchListMovieRemoval(
+                            MovieManager.getWatchList()
+                    );
 
                 }
                 case "3" -> {
                     handleWatchedMovieRemoval(
-                            MovieManager.getWatchedMoviesList()
+                            MovieManager.getWatchedMoviesListHistory()
                     );
                 }
                 case "0" -> menuOpen = false;
@@ -63,7 +65,7 @@ public class CLIController {
                 }
                 case "2" -> {
                     System.out.println("Movie marked as watched.");
-                    MovieManager.addToWatchedMoviesList(movie);
+                    MovieManager.addToWatchedMovieListHistory(movie);
                     addMenuOpen = false;
                 }
                 case "0" -> addMenuOpen = false;
@@ -82,7 +84,31 @@ public class CLIController {
                 switch (menuOption) {
                     case "1" -> {
                         System.out.print("Enter a number of the movie to remove it: ");
-                        MovieManager.removeMovieWatchedList(Integer.parseInt(userInput.nextLine()));
+                        MovieManager.removeMovieWatchedListHistory(Integer.parseInt(userInput.nextLine()));
+
+                        System.out.println("Movie has been removed from the list!");
+                        addMenuOpen = false;
+                    }
+
+                    case "0" -> addMenuOpen = false;
+                    default -> System.out.println("Invalid option, please try again.");
+                }
+            }
+        }
+    }
+
+    public void handleWatchListMovieRemoval(boolean isListEmpty){
+        if(isListEmpty){
+            boolean addMenuOpen = true;
+
+            while (addMenuOpen) {
+                showRemoveMovieMenu();
+                String menuOption = userInput.nextLine();
+
+                switch (menuOption) {
+                    case "1" -> {
+                        System.out.print("Enter a number of the movie to remove it: ");
+                        MovieManager.removeMovieWatchList(Integer.parseInt(userInput.nextLine()));
 
                         System.out.println("Movie has been removed from the list!");
                         addMenuOpen = false;
